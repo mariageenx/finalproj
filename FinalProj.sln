@@ -1,25 +1,447 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32901.82
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProj", "FinalProj\FinalProj.csproj", "{DCF0EE5D-1570-46A7-8E57-0CA65EF95CC8}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DCF0EE5D-1570-46A7-8E57-0CA65EF95CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DCF0EE5D-1570-46A7-8E57-0CA65EF95CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DCF0EE5D-1570-46A7-8E57-0CA65EF95CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DCF0EE5D-1570-46A7-8E57-0CA65EF95CC8}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {691B5EBD-DA8B-4FD1-A2BB-ABC651474FBE}
-	EndGlobalSection
-EndGlobal
+using System;
+using c = System.Console;
+
+namespace FinalProj
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string user, pass;
+            int choice, i = 0;
+
+            do
+            {
+                c.Clear();
+                c.Write("ENTER USERNAME: ");
+                user = c.ReadLine();
+                c.Write("ENTER PASSWORD: ");
+                pass = c.ReadLine();
+
+
+                if (user == "sevy" || pass == "1906")
+                {
+                    c.Clear();
+                    c.WriteLine("---------------------------------------------------------------------");
+                    c.WriteLine("MENU:\n 1.BASIC\n 2.INTERMEDIATE\n 3.ENTERTAINMENT\n 4.CREDITS");
+                    c.WriteLine("---------------------------------------------------------------------");
+                    c.Write("\nENTER CHOICE: ");
+                    choice = int.Parse(c.ReadLine());
+
+                    if (choice == 1)
+                    {
+                        int ctrTwo = 0;
+                        do
+                        {
+                            c.Clear();
+                            string SubChoice;
+                            c.WriteLine("BASIC:\n A.SWAPPING\n B.MDAS\n C.HIGHEST NUMBER ");
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.Write("ENTER YOUR CHOICE: ");
+                            SubChoice = c.ReadLine();
+
+                            switch (SubChoice)
+                            {
+                                case "A":
+                                    Swapping();
+                                    break;
+
+                                case "B":
+                                    MDAS();
+                                    break;
+
+                                case "C":
+                                    HighNum();
+                                    break;
+
+                                default:
+                                    c.WriteLine("---------------------------------------------------------------------");
+                                    c.WriteLine("INVALID CHOICE!");
+                                    c.ReadLine();
+                                    ctrTwo++;
+                                    break;
+                            }
+
+                        } while (ctrTwo < 3);
+
+                    }
+                    else if (choice == 2)
+                    {
+                        int ctrThree = 0;
+                        do
+                        {
+                            c.Clear();
+                            string SubChoice;
+                            c.WriteLine("INTERMIDIATE:\n A.STUDENT PROFILE\n B.GRADE COMPUTATION\n C.SALES COMPUTATION");
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.Write("ENTER YOUR CHOICE: ");
+                            SubChoice = c.ReadLine();
+
+                            switch (SubChoice)
+                            {
+                                case "A":
+                                    StudProfile();
+                                    break;
+
+                                case "B":
+                                    GradeComp();
+                                    break;
+
+                                case "C":
+                                    SalesComp();
+                                    break;
+
+                                default:
+                                    c.WriteLine("---------------------------------------------------------------------");
+                                    c.WriteLine("INVALID CHOICE!");
+                                    c.ReadLine();
+                                    ctrThree++;
+                                    break;
+
+                            }
+
+                        } while (ctrThree < 3);
+
+                    }
+                    else if (choice == 3)
+                    {
+                        int ctrFour = 0;
+                        do
+                        {
+                            c.Clear();
+                            string SubChoice;
+                            c.WriteLine("1.ENTERTAINMENT\n A.MULTI-PLAYER\n B.SINGLE PLAYER");
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.Write("ENTER YOUR CHOICE: ");
+                            SubChoice = c.ReadLine();
+
+                            if (SubChoice == "A")
+                            {
+                                c.Clear();
+                                int games;
+                                c.WriteLine("MULTI-PLAYER:\n 1.TIC-TAC-TOE\n 2. ROCK, PAPER, SCISSORS");
+                                c.WriteLine("---------------------------------------------------------------------");
+                                c.Write("ENTER YOUR CHOICE: ");
+                                games = int.Parse(c.ReadLine());
+
+                                int ctrFive = 0;
+                                do
+                                {
+                                    switch (games)
+                                    {
+                                        case 1:
+                                            tictac();
+                                            break;
+
+                                        case 2:
+                                            rocksci();
+                                            break;
+
+                                        default:
+                                            c.WriteLine("---------------------------------------------------------------------");
+                                            c.WriteLine("INVALID CHOICE");
+                                            break;
+
+                                    }
+                                } while (ctrFive < 3);
+                            }
+                            else if (SubChoice == "B")
+                            {
+                                c.Clear();
+                                int games;
+                                c.WriteLine("SINGLE PLAYER:\n 1.DASH RUNNER");
+                                c.WriteLine("---------------------------------------------------------------------");
+                                c.Write("ENTER YOUR CHOICE: ");
+                                games = int.Parse(c.ReadLine());
+                                int ctrSix = 0;
+                                do
+                                {
+                                    switch (games)
+                                    {
+                                        case 1:
+                                            runner();
+                                            break;
+
+                                        default:
+                                            c.Clear();
+                                            c.WriteLine("INVALID CHOICE");
+                                            break;
+
+                                    }
+
+                                } while (ctrSix < 3);
+                            }
+                            else
+                            {
+                                c.WriteLine("INVALID CHOICE!");
+                            }
+
+                        } while (ctrFour < 3);
+
+
+                    }
+                    else if (choice == 4)
+                    {
+
+                        string credits;
+                        c.WriteLine();
+                        credits = c.ReadLine();
+
+                    }
+                    else
+                    {
+                        c.Clear();
+                        c.WriteLine("INVALID CHOICE");
+                        i++;
+                    }
+
+                }
+                else
+                {
+
+                    if (i < 3)
+                    {
+                        c.Clear();
+                        c.WriteLine("WRONG USERNAME/PASSWORD, TRY AGAIN.");
+                        i++; // i add
+                    }
+                    else
+                    {
+                        c.Clear();
+                        c.WriteLine("SYSTEM BLOCKED.");
+                       
+                    }
+                }
+
+                Console.ReadKey();
+
+            } while (i < 3) ;
+
+
+            Console.ReadKey();
+
+
+            //COLLECTION OF METHODS
+
+            static void Swapping()
+                {
+                    c.Clear();
+                    double numOne, numTwo, temp;
+
+                    c.Write("INPUT THE FIRST NUMBER: ");
+                    numOne = double.Parse(c.ReadLine());
+                    c.Write("INPUT THE SECOND NUMBER: ");
+                    numTwo = double.Parse(c.ReadLine());
+
+                    temp = numOne;
+                    numOne = numTwo;
+                    numTwo = temp;
+
+                    c.WriteLine("---------------------------------------------------------------------");
+                    c.WriteLine("AFTER SWAPPING:");                             
+                    c.WriteLine("FIRST NUMBER: " + numOne);
+                    c.WriteLine("SECOND NUMBER: " + numTwo);
+                    c.ReadLine();
+                }
+
+                static void MDAS()
+                {
+                    c.Clear();
+                    double firstNum, secondNum, answer;
+                    int mathEx;
+
+                    c.WriteLine("MENU:\n 1.ADDITION\n 2.SUBTRACTION\n 3.MULTIPLICATION\n 4.DIVISION");
+                    c.WriteLine("---------------------------------------------------------------------");
+                    c.Write("INPUT CHOICE: ");
+                    mathEx = int.Parse(c.ReadLine());
+
+                    switch (mathEx)
+                    {
+                        case 1:
+                            c.Clear();
+                            c.Write("First Number: ");
+                            firstNum = double.Parse(c.ReadLine());
+                            c.Write("Second Number: ");
+                            secondNum = double.Parse(c.ReadLine());
+                            answer = firstNum + secondNum;
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.WriteLine("ANSWER: " + firstNum + " " + "+" + " " + secondNum + " " + "=" + " " + answer + ".");
+                            break;
+
+                        case 2:
+                            c.Clear();
+                            c.Write("First Number: ");
+                            firstNum = double.Parse(c.ReadLine());
+                            c.Write("Second Number: ");
+                            secondNum = double.Parse(c.ReadLine());
+                            answer = firstNum - secondNum;
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.WriteLine("ANSWER: " + firstNum + " " + "-" + " " + secondNum + " " + "=" + " " + answer + ".");
+                            break;
+
+                        case 3:
+                            c.Clear();
+                            c.Write("First Number: ");
+                            firstNum = double.Parse(c.ReadLine());
+                            c.Write("Second Number: ");
+                            secondNum = double.Parse(c.ReadLine());
+                            answer = firstNum * secondNum;
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.WriteLine("ANSWER: " + firstNum + " " + "x" + " " + secondNum + " " + "=" + " " + answer + ".");
+                            break;
+
+                        case 4:
+                            c.Clear();
+                            c.Write("First Number: ");
+                            firstNum = double.Parse(c.ReadLine());
+                            c.Write("Second Number: ");
+                            secondNum = double.Parse(c.ReadLine());
+                            answer = firstNum / secondNum;
+                            c.WriteLine("---------------------------------------------------------------------");
+                            c.WriteLine("ANSWER: " + firstNum + " " + "/" + " " + secondNum + " " + "=" + " " + answer + ".");
+                            break;
+
+                        default:
+                        c.WriteLine("---------------------------------------------------------------------");
+                        c.WriteLine("INVALID CODE!");
+                            break;
+                    }
+                         c.ReadKey();
+                }
+
+                static void HighNum()
+                {
+                    c.Clear();
+                    double num1, num2, num3;
+                    c.WriteLine("FIND THE LARGEST NUMBER AMONG THE THREE:");
+                    c.WriteLine("-----------------------------------------------");
+
+                    c.Write("INPUT THE FIRST NUMBER: ");
+                    num1 = double.Parse(c.ReadLine());
+                    c.Write("INPUT THE SECOND NUMBER: ");
+                    num2 = double.Parse(c.ReadLine());
+                    c.Write("INPUT THE THIRD NUMBER: ");
+                    num3 = double.Parse(c.ReadLine());
+                    c.WriteLine("----------------------------------------------");
+
+                    if (num1 > num2)
+                    {
+                        if (num1 > num3)
+                        {
+                            c.WriteLine("ANSWER: THE 1ST NUMBER IS THE GREATEST AMONG THE THREE.");
+                        }
+                        else
+                        {
+                            c.WriteLine("ANSWER: THE 3RD NUMBER IS THE GREATEST AMONG THE THREE.");
+                        }
+                    }
+                    else if (num2 > num3)
+                    {
+                        c.WriteLine("ANSWER: THE 2ND NUMBER IS THE GREATEST AMONG THE THREE.");
+                    }
+                    else
+                        c.WriteLine("ANSWER: THE 3RD NUMBER IS THE GREATEST AMONG THE THREE.");
+
+                    c.ReadKey();
+                }
+
+                static void StudProfile()
+                {
+
+                    c.Clear();
+                    int count;
+                    c.Write("ENTER THE NUMBER OF STUDENTS: ");
+                    count = int.Parse(c.ReadLine());
+
+                    string[] name = new string[];   
+
+                    c.Write("WRITE STUDENT NUMBER: ");
+                    name[0] = c.ReadLine();
+                    c.Write("FIRST NAME: ");
+                    name[1] = c.ReadLine();
+                    c.Write("MIDDLE NAME: ");
+                    name[2] = c.ReadLine();
+                    c.Write("LAST NAME: ");
+                    name[3] = c.ReadLine(); 
+
+
+                    for ( int i = 0; i < name.Length; i++)
+                    {
+                        c.Clear();
+                        c.WriteLine("FULLNAME: " + name[i]);
+                    }
+
+                    c.ReadKey();
+                }
+                
+                static void SalesComp()
+                {
+                    
+                }
+
+                static void GradeComp()
+                {
+                    c.Clear();
+                    int count;
+                    c.Write("ENTER THE NUMBER OF SUBJECT: ");
+                    count = int.Parse(c.ReadLine());
+
+                    string[] subj = new string[count];
+                    double [] preGra = new double[count];
+                    double [] midGra = new double[count];
+                    double [] fiGra = new double[count];
+                    double[] ave = new double[count];
+                    double total = 0;
+                    double genAve;
+
+                    for (int ctr = 0; ctr < subj.Length; ctr++)
+                    {
+                        c.Clear();
+                        c.Write("ENTER SUBJECT: ");
+                        subj[ctr] = c.ReadLine();
+                        c.Write("ENTER PRELIM GRADE: ");
+                        preGra[ctr] = Convert.ToDouble(c.ReadLine());
+                        c.Write("ENTER MIDTERM GRADE: ");
+                        midGra[ctr] = Convert.ToDouble(c.ReadLine());
+                        c.Write("ENTER FINALGRADE: ");
+                        fiGra[ctr] = Convert.ToDouble(c.ReadLine());
+
+                        ave[ctr] = (preGra[ctr] + midGra[ctr] + fiGra[ctr]) / 3;
+                        total += ave[ctr];
+
+                    }
+
+                    genAve = total / count;
+                    c.Clear();
+                    c.WriteLine("-------------------------------------------------------------------------------");
+                    c.WriteLine("SUBJECT\tPRELIM\tMIDTERM\tFINAL\tAVERAGE");
+                    c.WriteLine("-------------------------------------------------------------------------------");
+
+                    for (int i = 0; i < subj.Length; i++) 
+                    {
+                        c.WriteLine(subj[i] + "\t" + preGra[i] + "\t" + midGra[i] + "\t" + fiGra[i] + "\t" + ave[i]);
+                    }
+                    c.WriteLine("-------------------------------------------------------------------------------");
+                    c.WriteLine("YOUR GENERAL AVERAGE IS {0:f1}.", genAve);
+
+                    c.ReadKey();
+
+                }
+
+                static void tictac()
+                {
+               
+                }
+
+                static void rocksci()
+                {
+
+                }
+
+                static void runner()
+                {
+
+                }
+        }
+    }
+}
